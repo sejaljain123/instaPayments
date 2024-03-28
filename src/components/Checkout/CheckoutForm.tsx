@@ -6,6 +6,7 @@ import { FaCartPlus } from "react-icons/fa";
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
 import { updateShippingAddress } from "@/lib/reducers/checkoutSlice";
+import useCustomToast from "../hooks/useCustomToast";
 
 export default function CheckoutForm() {
 
@@ -15,9 +16,10 @@ export default function CheckoutForm() {
 
     const router = useRouter();
 
+    const { errorToast } = useCustomToast();
     const handlePlaceOrder = () => {
         if (!shippingAddress || !paymentDetails) {
-            alert("Please fill all the details");
+            errorToast("Error", "Please fill all the details to place the order");
             return;
         }
         const random = Math.floor(Math.random() * 1000000);

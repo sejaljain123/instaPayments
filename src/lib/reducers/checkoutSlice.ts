@@ -22,7 +22,7 @@ const fetchCheckoutDetailsAsync = createAsyncThunk<
   console.log(isItemsCached, "isItemsCached")
   console.log(cachedItems, "cachedItems")
 
-if (isItemsCached && cachedItems.products.length > 0) {
+if (isItemsCached && cachedItems.products.length > 0 && cachedItems.paymentMethods.length > 0) {
     return cachedItems;
   }
   try {
@@ -80,6 +80,9 @@ const checkoutSlice = createSlice({
         state.cartItems = state.cartItems.filter((item) => item.id !== id);
       }
       state.cartTotal = state.cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0)
+      const updatedCart = state.cartItems;
+      const paymentMethods = state.paymentMethods;
+      setCacheWithExpiry("checkout", {products: updatedCart, paymentMethods }, 10);
     },
     addDiscount: (state, action) => {
       state.discount = action.payload;
