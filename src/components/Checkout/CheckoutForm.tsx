@@ -15,7 +15,11 @@ export default function CheckoutForm() {
     const router = useRouter();
 
     const handlePlaceOrder = () => {
-        router.push("/order-confirmation")
+        const random = Math.floor(Math.random() * 1000000);
+        if (random % 2 === 0)
+            router.push("/order-confirmation")
+        else
+            router.push("/order-failed")
     }
 
     const handleShippingAddress = (e: any) => {
@@ -24,7 +28,7 @@ export default function CheckoutForm() {
 
     return (
         <Flex w="full" direction="column" gap="8">
-            <CustomInput label="Shipping Address" placeholder="Enter your shipping address" value={shippingAddress} onChange={handleShippingAddress} rightIcon={<EditIcon />} />
+            <CustomInput type="shipping address" label="Shipping Address" placeholder="Enter your shipping address" value={shippingAddress} onChange={handleShippingAddress} rightIcon={<EditIcon />} />
             <PaymentInformation />
             <HStack w={{ base: "full", md: "flex-start" }} justifyContent={{ base: "center", md: "flex-start" }} bottom="20">
                 <Button variant="outline" size="lg" color="foreground" onClick={() => router.push("/cart")}>Back</Button>

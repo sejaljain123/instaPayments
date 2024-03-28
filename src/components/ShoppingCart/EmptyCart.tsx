@@ -8,7 +8,6 @@ function EmptyCart() {
     }
     return (
         <Box w="full" height="full">
-            <Text color="foreground" fontSize="2xl">Shopping Cart</Text>
             <Flex direction="column" gap={2} alignItems="center" justifyContent="center" height="full" >
                 <Image src="/images/empty-cart.png" alt="empty-cart" />
                 <Text color="foreground" fontSize="lg">Your cart is empty :(</Text>

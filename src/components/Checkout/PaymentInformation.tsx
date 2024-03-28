@@ -7,25 +7,9 @@ import { FaCcMastercard, FaGooglePay } from "react-icons/fa";
 import { SiMastercard, SiPaytm, SiPhonepe } from "react-icons/si";
 import { useDispatch, useSelector } from "react-redux";
 import { updatePaymentDetails } from "@/lib/reducers/checkoutSlice";
+import { UPI_OPTIONS } from "@/constants";
 
-const UPI_OPTIONS = [
-    {
-        id: 1,
-        name: 'Google Pay',
-        icon: FaGooglePay
-    },
-    {
-        id: 2,
-        name: 'PhonePe',
-        icon: SiPhonepe
 
-    },
-    {
-        id: 3,
-        name: 'Paytm',
-        icon: SiPaytm
-    }
-]
 export default function PaymentInformation() {
 
     const paymentDetails = useSelector((state: any) => state.checkout.paymentDetails);
@@ -47,7 +31,7 @@ export default function PaymentInformation() {
 
     const { getRadioProps: getRadioProps2 } = useRadioGroup({
         name: 'upi-options',
-        defaultValue: 'Google Pay',
+        defaultValue: '',
         onChange: setSelectedUPIOption
     })
     const group = getRootProps()
@@ -89,17 +73,17 @@ export default function PaymentInformation() {
                         <Text color="foreground" fontSize="md" >Or</Text>
                         <Divider />
                     </HStack>
-                    <CustomInput label="Enter your VPA" placeholder="Enter UPI ID" value={paymentDetails.upi} onChange={(e: any) => { dispatch(updatePaymentDetails({ upi: e.target.value })) }} />
+                    <CustomInput type="VPA" label="Enter your VPA" placeholder="Enter UPI ID" value={paymentDetails.upi} onChange={(e: any) => { dispatch(updatePaymentDetails({ upi: e.target.value })) }} />
                 </Box>
             }
             {
                 selectedOption === 'CARDS' &&
                 <VStack spacing="2" alignItems="flex-start" justifyContent="flex-start" width={{ base: "full", lg: "60%" }}  >
-                    <CustomInput label="Name on Card" placeholder="Type here..." value={paymentDetails.card.name} onChange={(e: any) => { dispatch(updatePaymentDetails({ card: { ...paymentDetails.card, name: e.target.value } })) }} />
-                    <CustomInput label="Card Number" placeholder="Type here..." value={paymentDetails.card.cardNumber} onChange={(e: any) => { dispatch(updatePaymentDetails({ card: { ...paymentDetails.card, cardNumber: e.target.value } })) }} rightIcon={<SiMastercard color="gray" />} />
+                    <CustomInput type="card name" label="Name on Card" placeholder="Type here..." value={paymentDetails.card.cardHolderName} onChange={(e: any) => { dispatch(updatePaymentDetails({ card: { ...paymentDetails.card, cardHolderName: e.target.value } })) }} />
+                    <CustomInput type="card number" label="Card Number" placeholder="0000 0000 0000 0000" value={paymentDetails.card.cardNumber} onChange={(e: any) => { dispatch(updatePaymentDetails({ card: { ...paymentDetails.card, cardNumber: e.target.value } })) }} rightIcon={<SiMastercard color="gray" />} />
                     <Flex w="full" justifyContent="space-between" gap="10">
-                        <CustomInput label="Expiry Date" placeholder="MM/YY" value={paymentDetails.card.expiry} onChange={(e: any) => { dispatch(updatePaymentDetails({ card: { ...paymentDetails.card, expiry: e.target.value } })) }} />
-                        <CustomInput label="CVV" placeholder="Type here..." value={paymentDetails.card.cvv} onChange={(e: any) => { dispatch(updatePaymentDetails({ card: { ...paymentDetails.card, cvv: e.target.value } })) }} />
+                        <CustomInput type="expiry" label="Expiry Date" placeholder="MM/YY" value={paymentDetails.card.expiry} onChange={(e: any) => { dispatch(updatePaymentDetails({ card: { ...paymentDetails.card, expiry: e.target.value } })) }} />
+                        <CustomInput type="cvv" label="CVV" placeholder="Type here..." value={paymentDetails.card.cvv} onChange={(e: any) => { dispatch(updatePaymentDetails({ card: { ...paymentDetails.card, cvv: e.target.value } })) }} />
                     </Flex>
                 </VStack>
             }

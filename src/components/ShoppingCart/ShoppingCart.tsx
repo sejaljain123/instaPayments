@@ -9,7 +9,10 @@ export default function ShoppingCart({ products }: any) {
         <Box w="full" h="full" display="flex" flexDirection="column" justifyContent="space-between" alignItems="center" mt="4">
             <VStack spacing="4" alignItems="flex-start" justifyContent="flex-start" width="full"   >
                 {products.map((item: any) => (
-                    <><ProductCard item={item} key={item.id} /><Divider /></>
+                    <Box w="full" key={item.id}>
+                        <ProductCard item={item} />
+                        <Divider />
+                    </Box>
                 ))}
             </VStack>
         </Box >

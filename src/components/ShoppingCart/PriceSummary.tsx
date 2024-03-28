@@ -1,9 +1,12 @@
 import { addDiscount } from "@/lib/reducers/checkoutSlice";
-import { Flex, VStack, Input, Button, Box, Text, HStack, Divider, Spacer } from "@chakra-ui/react"
+import { Flex, VStack, Input, Button, Box, Text, HStack, Divider, Spacer, FormControl, FormErrorMessage, FormLabel, InputGroup, InputRightElement } from "@chakra-ui/react"
 import { SP } from "next/dist/shared/lib/utils";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import CustomInput from "../Common/CustomInput";
+import validateInput from "@/utils/validation";
+import { type } from "os";
 
 export default function PriceSummary({ products }: { products: any[] }) {
     const cartTotal = useSelector((state: any) => state.checkout.cartTotal);
@@ -23,7 +26,7 @@ export default function PriceSummary({ products }: { products: any[] }) {
     }
 
     const applyDiscount = () => {
-        if (discountCode === "DISCOUNT") {
+        if (discountCode === "GROWW10") {
             dispatch(addDiscount(10));
         }
         else {
@@ -57,14 +60,20 @@ export default function PriceSummary({ products }: { products: any[] }) {
                 </VStack>
             </VStack >
             <VStack spacing="8" width="full" w="full" background="primaryForeground" shadow="lg" borderRadius="xl" px={{ base: "4", md: "12" }} py="8" alignItems="flex-start">
-                <Flex alignItems="center" w="full" >
+                <Flex alignItems="center" w="full" justifyContent="center" gap="2">
+
+                    {/* <CustomInput type="coupon" label="Coupon Code" placeholder="Enter coupon code here..." value={discountCode} onChange={handleCouponCode} /> */}
                     <Input
-                        placeholder="Apply Coupon Code"
+                        placeholder="Enter coupon code here..."
                         value={discountCode}
                         onChange={handleCouponCode}
-                        mr="2"
+                        bg="background"
+                        color="foreground"
+                        borderColor="primaryForeground"
+                        py="6"
+                        _focus={{ borderColor: "primary.500", outline: "none", border: "1px" }}
                     />
-                    <Button variant="ghost" onClick={applyDiscount} px="8" isDisabled={!discountCode} color="tertiary">
+                    <Button variant="outline" onClick={applyDiscount} isDisabled={!discountCode} color="foreground" >
                         Apply
                     </Button>
                 </Flex>

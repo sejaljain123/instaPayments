@@ -1,6 +1,6 @@
 import { fetchCheckoutDetails } from "@/pages/api/fetchCheckoutDetails";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-
+import { getCacheWithExpiry, setCacheWithExpiry } from "@/utils/cache";
 
 interface IItem {
   id: string;
@@ -14,7 +14,12 @@ const fetchCheckoutDetailsAsync = createAsyncThunk<
   { products: IItem[]; paymentMethods: string[] },
   void,
   { rejectValue: string }
->("checkout/fetchCheckout", async () => {
+>("checkout/fetchCheckout", async (_, {getState}) => {
+
+  const cachedItems = getCacheWithExpiry("checkout");
+  if (cachedItems ) {
+    return cachedItems;
+  }
   try {
     const response = await fetchCheckoutDetails();
     console.log(response);
@@ -37,8 +42,8 @@ const initialState = {
     type: "UPI",
     upi: "",
     card: {
-      name:"",
-      cardNumber: "0000 0000 0000 0000",
+      cardHolderName:"",
+      cardNumber: "",
       expiry: "",
       cvv: "",
     },
@@ -70,7 +75,6 @@ const checkoutSlice = createSlice({
         state.cartItems = state.cartItems.filter((item) => item.id !== id);
       }
       state.cartTotal = state.cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0)
-      // state.totalPrice += - state.discount + state.shippingCost
     },
     addDiscount: (state, action) => {
       state.discount = action.payload;
@@ -92,11 +96,11 @@ const checkoutSlice = createSlice({
         state.loading = true;
       })
       .addCase(fetchCheckoutDetailsAsync.fulfilled, (state, action) => {
-        console.log(action.payload); // Check payload data
         state.loading = false;
         state.cartItems = action.payload.products;
         state.paymentMethods = action.payload.paymentMethods;
         state.cartTotal = action.payload.products.reduce((acc, item) => acc + item.price * item.quantity, 0)
+        setCacheWithExpiry("checkout", action.payload);
       })
       .addCase(fetchCheckoutDetailsAsync.rejected, (state, action) => {
         state.loading = false;
