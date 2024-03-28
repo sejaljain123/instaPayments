@@ -3,9 +3,11 @@ import { NAVBAR_HEIGHT, NAVBAR_HEIGHT_MOBILE } from "../../constants"
 import { useTheme } from "@chakra-ui/react";
 import ThemeSwitcher from "../ThemeSwitcher";
 import { FaCartShopping } from "react-icons/fa6";
+import { useRouter } from "next/router";
 
 export default function Header() {
     const { icons } = useTheme();
+    const router = useRouter();
     return (
         <Flex
             alignItems="center"
@@ -22,7 +24,7 @@ export default function Header() {
             <Image src={icons.logo} alt="main-logo" width={10} height={10} />
 
             <Flex gap="8" alignItems="center">
-                <Icon as={FaCartShopping} boxSize={5} color="primary" />
+                <Icon as={FaCartShopping} boxSize={5} color="primary" onClick={() => router.push("/cart")} />
                 <ThemeSwitcher />
             </Flex>
         </Flex >

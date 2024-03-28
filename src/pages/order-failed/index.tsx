@@ -15,8 +15,8 @@ export default function OrderConfirmation() {
             <meta name="viewport" content="width=device-width, initial-scale=1" />
             <link rel="icon" href="/favicon.ico" />
         </Head><Flex direction="column" gap={4} alignItems="center" justifyContent="center" height="full" textAlign="center">
-                <Heading color="foreground" fontSize="6xl" as="h1">Order Failed</Heading>
-                <Text color="foreground" fontSize="lg" w="40%">
+                <Heading color="foreground" fontSize={{ base: "4xl", md: "6xl" }} as="h1">Order Failed</Heading>
+                <Text color="foreground" fontSize={{ base: "md", md: "lg" }} w={{ base: "90%", lg: "50%", xl: "40%" }}>
                     Uh, oh! Something went wrong. We are sorry, your order could not be processed.The payment authorization for your order failed to complete. This could be due to incorrect payment information or an issue with the payment method. Please try again.
                 </Text>
                 <HStack>

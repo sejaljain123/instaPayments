@@ -26,7 +26,7 @@ export default function CheckoutForm() {
         <Flex w="full" direction="column" gap="8">
             <CustomInput label="Shipping Address" placeholder="Enter your shipping address" value={shippingAddress} onChange={handleShippingAddress} rightIcon={<EditIcon />} />
             <PaymentInformation />
-            <HStack w="60%" justifyContent="flex-start" position="fixed" bottom="20">
+            <HStack w={{ base: "full", md: "flex-start" }} justifyContent={{ base: "center", md: "flex-start" }} bottom="20">
                 <Button variant="outline" size="lg" color="foreground" onClick={() => router.push("/cart")}>Back</Button>
                 <Button colorScheme="primary" size="lg" rightIcon={<FaCartPlus />} onClick={handlePlaceOrder} >Place Order</Button>
             </HStack>

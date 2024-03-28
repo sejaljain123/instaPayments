@@ -33,7 +33,7 @@ export default function PriceSummary({ products }: { products: any[] }) {
     }
 
     return (
-        <VStack gap="4" mt="20" w="40% ">
+        <VStack gap="4" w="full ">
             <VStack spacing="8" width="full" w="full" background="primaryForeground" shadow="lg" borderRadius="xl" px="12" py="8" alignItems="flex-start" >
                 <Text color="foreground" fontSize="xl" fontWeight="bold">Cart Total</Text>
                 <VStack justifyContent="space-between" alignItems="center" w="full" mt="8" color="foreground" fontSize="lg">
@@ -56,8 +56,8 @@ export default function PriceSummary({ products }: { products: any[] }) {
                     </HStack>
                 </VStack>
             </VStack >
-            <VStack spacing="8" width="full" w="full" background="primaryForeground" shadow="lg" borderRadius="xl" px="12" py="8" alignItems="flex-start">
-                <Flex alignItems="center" >
+            <VStack spacing="8" width="full" w="full" background="primaryForeground" shadow="lg" borderRadius="xl" px={{ base: "4", md: "12" }} py="8" alignItems="flex-start">
+                <Flex alignItems="center" w="full" >
                     <Input
                         placeholder="Apply Coupon Code"
                         value={discountCode}

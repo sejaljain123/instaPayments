@@ -15,7 +15,7 @@ export default function App({ Component, pageProps }: AppProps) {
           <Box w="full" height={{ base: `${NAVBAR_HEIGHT_MOBILE}px`, lg: `${NAVBAR_HEIGHT}px` }} >
             <Header />
           </Box>
-          <Flex background="background" width="full" flex="1" justifyContent="center" px="12" py="8" gap="12">
+          <Flex background="background" width="full" flex="1" justifyContent="center" px={{ base: "2", md: "4", lg: "8" }} py={{ base: "", md: "4", lg: "8" }} gap="12">
             <Component {...pageProps} />
           </Flex>
         </Flex>

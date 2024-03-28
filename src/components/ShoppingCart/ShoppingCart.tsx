@@ -6,8 +6,8 @@ import ProductCard from './ProductCard';
 export default function ShoppingCart({ products }: any) {
 
     return (
-        <Box w="full" h="full" display="flex" flexDirection="column" justifyContent="space-between" alignItems="center">
-            <VStack spacing="4" alignItems="flex-start" justifyContent="flex-start" width="full" mt="8"  >
+        <Box w="full" h="full" display="flex" flexDirection="column" justifyContent="space-between" alignItems="center" mt="4">
+            <VStack spacing="4" alignItems="flex-start" justifyContent="flex-start" width="full"   >
                 {products.map((item: any) => (
                     <><ProductCard item={item} key={item.id} /><Divider /></>
                 ))}

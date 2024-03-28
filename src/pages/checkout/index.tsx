@@ -3,7 +3,7 @@ import OrderTotal from "@/components/Checkout/OrderTotal";
 import Header from "@/components/Header";
 import PriceSummary from "@/components/ShoppingCart/PriceSummary";
 import { NAVBAR_HEIGHT_MOBILE, NAVBAR_HEIGHT } from "@/constants";
-import { Flex, Heading, Image, VStack } from "@chakra-ui/react";
+import { Flex, Heading, Image, VStack, Box, Text } from "@chakra-ui/react";
 import { useTheme } from "@chakra-ui/react";
 import Head from "next/head";
 import { useRouter } from "next/router";
@@ -29,6 +29,8 @@ export default function Checkout() {
     }, [cartItems.length]
     )
 
+    const [showSummary, setShowSummary] = useState(false);
+
     return (
         <><Head>
             <title>Checkout</title>
@@ -36,14 +38,17 @@ export default function Checkout() {
             <meta name="viewport" content="width=device-width, initial-scale=1" />
             <link rel="icon" href="/favicon.ico" />
         </Head><Flex direction="column" w="full">
-                <Flex background="background" width="full" flex="1" justifyContent="center" p="8" gap="20" h="full">
-                    <VStack spacing="8" width="60%" alignItems="flex-start">
+                <Flex background="background" width="full" flex="1" justifyContent="space-between" gap={{ base: "8", xl: "20" }} h="full" px={{ base: "2", md: "8" }} py="8" flexDirection={{ base: "column", lg: "row" }}>
+                    <VStack spacing="8" width="full" alignItems={{ base: "center", lg: "flex-start" }}>
                         <Heading as="h1" size="2xl" color="foreground">Checkout</Heading>
                         <CheckoutForm />
+                        <Text color="foreground" fontSize="sm" opacity="0.9" mt="4" textDecoration="underline" onClick={() => setShowSummary(!showSummary)} cursor="pointer" display={{ base: "block", md: "none" }}>{showSummary ? "Hide" : "Show"} Order Summary</Text>
                     </VStack>
-                    <OrderTotal />
+                    <Box w={{ base: "100%", xl: "40%" }} display={{ base: showSummary ? "block" : "none", md: "block" }} >
+                        <OrderTotal />
+                    </Box>
                 </Flex>
-            </Flex></>
+            </Flex ></>
 
     )
 }

@@ -68,7 +68,7 @@ export default function PaymentInformation() {
                 })}
             </HStack>
             {selectedOption === 'UPI' &&
-                <Box w="60%" display="flex" flexDirection="column" gap="8">
+                <Box width={{ base: "full", lg: "60%" }} display="flex" flexDirection="column" gap="8">
                     <Text color="foreground" fontSize="md" fontWeight="bold" >Select UPI App</Text>
                     <HStack spacing="4" >
                         {UPI_OPTIONS.map((option) => {
@@ -94,7 +94,7 @@ export default function PaymentInformation() {
             }
             {
                 selectedOption === 'CARDS' &&
-                <VStack spacing="2" alignItems="flex-start" justifyContent="flex-start" width="60%"   >
+                <VStack spacing="2" alignItems="flex-start" justifyContent="flex-start" width={{ base: "full", lg: "60%" }}  >
                     <CustomInput label="Name on Card" placeholder="Type here..." value={paymentDetails.card.name} onChange={(e: any) => { dispatch(updatePaymentDetails({ card: { ...paymentDetails.card, name: e.target.value } })) }} />
                     <CustomInput label="Card Number" placeholder="Type here..." value={paymentDetails.card.cardNumber} onChange={(e: any) => { dispatch(updatePaymentDetails({ card: { ...paymentDetails.card, cardNumber: e.target.value } })) }} rightIcon={<SiMastercard color="gray" />} />
                     <Flex w="full" justifyContent="space-between" gap="10">

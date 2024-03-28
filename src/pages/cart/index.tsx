@@ -3,11 +3,9 @@ import PriceSummary from '@/components/ShoppingCart/PriceSummary';
 import ShoppingCart from '@/components/ShoppingCart/ShoppingCart';
 import { useDispatch, useSelector } from 'react-redux';
 import { NAVBAR_HEIGHT_MOBILE, NAVBAR_HEIGHT } from '@/constants';
-import { Flex, Heading, Spinner, VStack } from '@chakra-ui/react'
+import { Flex, Heading, Spinner, VStack, Box } from '@chakra-ui/react'
 import { useState, useEffect } from 'react';
 import { fetchCheckoutDetailsAsync } from '@/lib/reducers/checkoutSlice';
-import store from '@/lib/store';
-import { AsyncThunkAction } from '@reduxjs/toolkit';
 import Head from 'next/head';
 
 export default function Cart() {
@@ -43,14 +41,16 @@ export default function Cart() {
             <link rel="icon" href="/favicon.ico" />
         </Head>
             <Flex direction="column" w="full">
-                <Flex background="background" width="full" flex="1" justifyContent="space-between" gap="20" h="full" p="8">
-                    <VStack spacing="8" width="full" alignItems="flex-start">
+                <Flex background="background" width="full" flex="1" justifyContent="space-between" gap={{ base: "8", xl: "20" }} h="full" px={{ base: "2", md: "8" }} py="8" flexDirection={{ base: "column", lg: "row" }}>
+                    <VStack spacing="8" width="full" alignItems={{ base: "center", lg: "flex-start" }}>
                         <Heading as="h1" size="2xl" color="foreground">Shopping Cart</Heading>
                         <ShoppingCart products={cartItems} />
                     </VStack>
-                    <PriceSummary products={cartItems} />
+                    <Box w={{ base: "100%", xl: "40%" }} mt="20">
+                        <PriceSummary products={cartItems} />
+                    </Box>
                 </Flex>
-            </Flex>
+            </Flex >
         </>
 
     )

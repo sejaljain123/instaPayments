@@ -11,8 +11,8 @@ export default function OrderTotal() {
 
     const totalPrice = cartTotal - discountAmount + shippingFee;
     return (
-        <VStack gap="4" w="30%">
-            <VStack spacing="8" width="full" w="full" background="primaryForeground" shadow="lg" borderRadius="xl" px="12" py="8" alignItems="flex-start">
+        <VStack gap="4" w="full">
+            <VStack spacing="8" width="full" w="full" background="primaryForeground" shadow="lg" borderRadius="xl" px={{ base: "6", md: "8" }} py="8" alignItems="flex-start">
                 <Text color="foreground" fontSize="xl" fontWeight="bold">Order Summary</Text>
                 <VStack justifyContent="space-between" alignItems="center" w="full" mt="8" color="foreground" fontSize="lg">
                     {cartItems.map((item: any) => (
