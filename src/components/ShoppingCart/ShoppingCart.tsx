@@ -6,7 +6,7 @@ import IItem from '@/interface/common.interface';
 
 export default function ShoppingCart({ products }: { products: IItem[] }) {
     return (
-        <Box w="full" h="full" display="flex" flexDirection="column" justifyContent="space-between" alignItems="center" mt="4">
+        <Box w="full" h="full" display="flex" flexDirection="column" justifyContent="space-between" alignItems="center" mt="12">
             <TableContainer width="full">
                 <Table variant="simple" size="sm" width="full">
                     <Thead>

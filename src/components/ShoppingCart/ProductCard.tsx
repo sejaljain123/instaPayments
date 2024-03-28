@@ -18,11 +18,11 @@ export default function ProductTableRow({ item }: { item: IItem }) {
                 <Icon as={IoClose} color="foreground" onClick={handleRemove} cursor="pointer" />
             </Td>
             <Td>
-                <Flex alignItems="center" gap="2" flexDirection={{ base: "column", md: "row" }}>
+                <Flex gap="4" flexDirection={{ base: "column", md: "row" }} alignItems={{ base: "flex-start", md: "center" }}>
                     <AspectRatio ratio={1} width={{ base: "12", md: "20" }} position="relative">
                         <Image src={item.image} alt="Product Image" />
                     </AspectRatio>
-                    <Text color="foreground" fontSize={{ base: "xs", xl: "md" }} w={{ base: "20ch", xl: "50%" }} isTruncated title={item.title} textAlign={{ base: "center", md: "left" }}>
+                    <Text color="foreground" fontSize={{ base: "xs", xl: "md" }} w={{ base: "20ch", xl: "50%" }} isTruncated title={item.title} >
                         {item.title}
                     </Text>
                 </Flex>

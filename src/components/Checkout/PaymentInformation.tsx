@@ -15,7 +15,6 @@ export default function PaymentInformation() {
     const paymentDetails = useSelector((state: any) => state.checkout.paymentDetails);
     const paymentMethods = useSelector((state: any) => state.checkout.paymentMethods);
 
-    console.log(paymentDetails, paymentMethods);
 
 
     const [selectedOption, setSelectedOption] = useState('UPI')

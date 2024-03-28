@@ -25,7 +25,6 @@ const validateInput = (type: string, value: string) => {
       case 'card name':
         return value.length > 3;
       case 'card number':
-        console.log(value, "value");
         return validateCardNumber(value);
       case 'expiry':
         return validateExpiry(value);

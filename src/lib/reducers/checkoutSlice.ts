@@ -12,15 +12,13 @@ const fetchCheckoutDetailsAsync = createAsyncThunk<
 
   const cachedItems = getCacheWithExpiry("checkout");
   const isItemsCached = getCacheWithExpiry("isItemsCached");
-  console.log(isItemsCached, "isItemsCached")
-  console.log(cachedItems, "cachedItems")
+
 
 if (isItemsCached && cachedItems.products.length > 0 && cachedItems.paymentMethods.length > 0) {
     return cachedItems;
   }
   try {
     const response = await fetchCheckoutDetails();
-    console.log(response);
     return response;
   } catch (error) {
     throw new Error("Failed to fetch checkout details");
@@ -59,7 +57,6 @@ const checkoutSlice = createSlice({
       state.cartItems.push(action.payload.products);
     },
     removeItem: (state, action) => {
-      console.log(action.payload.id, "id");
       state.cartItems = state.cartItems.filter((item) => item.id !== action.payload.id);
       state.cartTotal = state.cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0)
     },
