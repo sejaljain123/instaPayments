@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import CustomInput from "../Common/CustomInput";
 import validateInput from "@/utils/validation";
 import { type } from "os";
-import useCustomToast from "../hooks/useCustomToast";
+import useCustomToast from "../../hooks/useCustomToast";
 
 export default function PriceSummary({ products }: { products: any[] }) {
     const cartTotal = useSelector((state: any) => state.checkout.cartTotal);

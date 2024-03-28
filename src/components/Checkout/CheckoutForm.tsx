@@ -6,7 +6,7 @@ import { FaCartPlus } from "react-icons/fa";
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
 import { updateShippingAddress } from "@/lib/reducers/checkoutSlice";
-import useCustomToast from "../hooks/useCustomToast";
+import useCustomToast from "../../hooks/useCustomToast";
 
 export default function CheckoutForm() {
 
