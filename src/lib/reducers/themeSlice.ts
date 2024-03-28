@@ -1,12 +1,21 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-// Define the initial state for the theme slice
-const initialState = {
-  currentTheme: 'brand1', // Default theme
-  // Add other theme-related states here if needed
+const loadInitialState = () => {
+    try {
+      const serializedState = localStorage.getItem('themeState');
+      if (serializedState === null) {
+        return { currentTheme: 'brand1' }; 
+      }
+      return JSON.parse(serializedState);
+    } catch (error) {
+      return { currentTheme: 'brand1' };
+  };
 };
 
-// Create the theme slice using createSlice
+const initialState = {
+  currentTheme: loadInitialState().currentTheme,
+};
+
 const themeSlice = createSlice({
   name: 'theme',
   initialState,
@@ -14,9 +23,8 @@ const themeSlice = createSlice({
     // Define reducer to toggle between themes
     toggleTheme: (state) => {
       state.currentTheme = state.currentTheme === 'brand1' ? 'brand2' : 'brand1';
-      // Add logic for switching between other themes if needed
+      localStorage.setItem('themeState', JSON.stringify(state));
     },
-    // Add other reducers for theme-related actions here
   },
 });
 
@@ -24,4 +32,3 @@ const themeSlice = createSlice({
 export const { toggleTheme } = themeSlice.actions;
 export default themeSlice.reducer;
 
-// Optional: Export a selector function to access the current theme state

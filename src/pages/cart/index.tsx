@@ -24,6 +24,11 @@ export default function Cart() {
     }, [dispatch]); // Only run the effect when dispatch changes
 
 
+    const handleRefreshCart = () => {
+        setCacheWithExpiry("isItemsCached", false, 60);
+        dispatch(fetchCheckoutDetailsAsync() as any);
+    }
+
 
     if (loading) {
         return (
@@ -32,16 +37,9 @@ export default function Cart() {
             </Flex>
         )
     }
-
     if (cartItems && cartItems.length === 0 && !loading) {
         return <EmptyCart />;
     }
-
-    const handleRefreshCart = () => {
-        setCacheWithExpiry("isItemsCached", false, 60);
-        dispatch(fetchCheckoutDetailsAsync() as any);
-    }
-
     return (
         <><Head>
             <title>Cart</title>
