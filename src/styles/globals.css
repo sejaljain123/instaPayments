@@ -2,7 +2,8 @@
 
 /* Custom scrollbar styles for WebKit browsers */
 ::-webkit-scrollbar {
-  width: 2px; /* Set scrollbar width */
+  width: 1px; /* Set scrollbar width */
+  height: 1px; /* Set scrollbar height */
 }
 
 ::-webkit-scrollbar-track {
