@@ -3,15 +3,19 @@ import PriceSummary from '@/components/ShoppingCart/PriceSummary';
 import ShoppingCart from '@/components/ShoppingCart/ShoppingCart';
 import { useDispatch, useSelector } from 'react-redux';
 import { NAVBAR_HEIGHT_MOBILE, NAVBAR_HEIGHT } from '@/constants';
-import { Flex, Heading, Spinner, VStack, Box } from '@chakra-ui/react'
+import { Flex, Heading, Spinner, VStack, Box, Button } from '@chakra-ui/react'
 import { useState, useEffect } from 'react';
 import { fetchCheckoutDetailsAsync } from '@/lib/reducers/checkoutSlice';
+import { setCacheWithExpiry } from '@/utils/cache';
 import Head from 'next/head';
+import router from 'next/router';
+import { GrPower, GrPowerReset } from 'react-icons/gr';
 
 export default function Cart() {
     const cartItems = useSelector((state: any) => state.checkout.cartItems);
     const paymentMethods = useSelector((state: any) => state.checkout.paymentMethods);
     const loading = useSelector((state: any) => state.checkout.loading);
+
 
     const dispatch = useDispatch();
 
@@ -29,8 +33,13 @@ export default function Cart() {
         )
     }
 
-    if (cartItems.length === 0) {
+    if (cartItems && cartItems.length === 0 && !loading) {
         return <EmptyCart />;
+    }
+
+    const handleRefreshCart = () => {
+        setCacheWithExpiry("isItemsCached", false, 60);
+        dispatch(fetchCheckoutDetailsAsync() as any);
     }
 
     return (
@@ -40,13 +49,16 @@ export default function Cart() {
             <meta name="viewport" content="width=device-width, initial-scale=1" />
             <link rel="icon" href="/favicon.ico" />
         </Head>
-            <Flex direction="column" w="full">
-                <Flex background="background" width="full" flex="1" justifyContent="space-between" gap={{ base: "8", xl: "20" }} h="full" px={{ base: "2", md: "8" }} py="8" flexDirection={{ base: "column", lg: "row" }}>
+            <Flex direction="column" w="full" px={{ base: "2", md: "4", xl: "8" }} py="8">
+                <Flex justifyContent="space-between" alignItems="center" flexDirection={{ base: "column", lg: "row" }}>
+                    <Heading as="h1" size="2xl" color="foreground">Shopping Cart</Heading>
+                    <Button color="foreground" variant="outline" mt="6" rightIcon={<GrPowerReset />} onClick={handleRefreshCart}>Refresh Cart</Button>
+                </Flex>
+                <Flex background="background" width="full" flex="1" justifyContent="space-between" gap={{ base: "8", xl: "20" }} h="full" flexDirection={{ base: "column", lg: "row" }}>
                     <VStack spacing="8" width="full" alignItems={{ base: "center", lg: "flex-start" }}>
-                        <Heading as="h1" size="2xl" color="foreground">Shopping Cart</Heading>
                         <ShoppingCart products={cartItems} />
                     </VStack>
-                    <Box w={{ base: "100%", xl: "40%" }} mt="20">
+                    <Box w={{ base: "full", lg: "40%" }} mt="10">
                         <PriceSummary products={cartItems} />
                     </Box>
                 </Flex>

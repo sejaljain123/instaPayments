@@ -15,8 +15,6 @@ const themes: { [key: string]: any }  = {
         subHeading: 'gray.500'
       },
       components: {
-        // Customize Chakra UI components as needed
-        // For example:
         Button: {
           baseStyle: {
             fontWeight: 'bold',
@@ -42,8 +40,6 @@ const themes: { [key: string]: any }  = {
           },
         },
       },
-      // Include the GROWW logo in the assets folder and refer to it here
-      // Replace '/path/to/groww-logo.png' with the actual path to the logo
       icons: {
         logo: 'https://groww.in/groww-logo-270.png',
         themeSwitcher: FaMoon,
@@ -55,15 +51,13 @@ const themes: { [key: string]: any }  = {
         heading: 'Montserrat, sans-serif',
       },
       colors: {
-        background: 'hsl(240, 5.9%, 10%)', // Inverted background color
-        foreground: 'hsl(0, 0%, 98%)', // Inverted foreground color
-        primary: 'hsl(0, 0%, 100%)', // Inverted primary color
-        primaryForeground: 'hsl(240, 10%, 3.9%)', // Inverted primaryForeground color
+        background: 'hsl(240, 5.9%, 10%)',
+        foreground: 'hsl(0, 0%, 98%)', 
+        primary: 'hsl(0, 0%, 100%)',
+        primaryForeground: 'hsl(240, 10%, 3.9%)', 
         subHeading: 'gray.500'
       },
       components: {
-        // Customize Chakra UI components as needed
-        // For example:
         Button: {
           baseStyle: {
             fontWeight: 'bold',
@@ -75,6 +69,15 @@ const themes: { [key: string]: any }  = {
               color: 'primaryForeground',
               _hover: {
                 bg: 'primary.500',
+              },
+            },
+            outline: {
+              bg: 'transparent',
+              color: 'primary',
+              border: '1px solid',
+              borderColor: 'primary',
+              _hover: {
+                bg: 'gray.800',
               },
             },
           },

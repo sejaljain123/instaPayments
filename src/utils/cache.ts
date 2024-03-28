@@ -1,5 +1,5 @@
 // Function to store data with expiry in localStorage
-const setCacheWithExpiry = (key:string, data:any , expirationMinutes=10) => {
+const setCacheWithExpiry = (key:string, data:any , expirationMinutes:number) => {
     const now = new Date();
     const expirationTime = now.getTime() + expirationMinutes * 60 * 1000; // Convert minutes to milliseconds
     const item = {

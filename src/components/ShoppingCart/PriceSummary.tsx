@@ -55,7 +55,7 @@ export default function PriceSummary({ products }: { products: any[] }) {
                     <Divider mt="12" />
                     <HStack justifyContent="space-between" w="full">
                         <Text>Total</Text>
-                        <Text>${totalPrice.toFixed(2)}</Text>
+                        <Text>${totalPrice.toFixed(2)}</Text>1
                     </HStack>
                 </VStack>
             </VStack >
@@ -64,7 +64,7 @@ export default function PriceSummary({ products }: { products: any[] }) {
 
                     {/* <CustomInput type="coupon" label="Coupon Code" placeholder="Enter coupon code here..." value={discountCode} onChange={handleCouponCode} /> */}
                     <Input
-                        placeholder="Enter coupon code here..."
+                        placeholder="Try ' GROWW10 ' for discount"
                         value={discountCode}
                         onChange={handleCouponCode}
                         bg="background"

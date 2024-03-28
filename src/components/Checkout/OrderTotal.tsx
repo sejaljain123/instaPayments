@@ -21,7 +21,7 @@ export default function OrderTotal() {
                                 <Text fontSize="sm">x {item.quantity}</Text>
                                 <Text w="20ch" fontSize="md" isTruncated>{item.title}</Text>
                             </HStack>
-                            <Text>${item.price}</Text>
+                            <Text>${item.price * item.quantity}</Text>
                         </HStack>
                             <Divider />
                         </>

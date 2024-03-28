@@ -10,11 +10,16 @@ import { updateShippingAddress } from "@/lib/reducers/checkoutSlice";
 export default function CheckoutForm() {
 
     const shippingAddress = useSelector((state: any) => state.checkout.shippingAddress);
+    const paymentDetails = useSelector((state: any) => state.checkout.paymentDetails);
     const dispatch = useDispatch();
 
     const router = useRouter();
 
     const handlePlaceOrder = () => {
+        if (!shippingAddress || !paymentDetails) {
+            alert("Please fill all the details");
+            return;
+        }
         const random = Math.floor(Math.random() * 1000000);
         if (random % 2 === 0)
             router.push("/order-confirmation")

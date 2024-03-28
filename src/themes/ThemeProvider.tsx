@@ -1,3 +1,5 @@
+/* This code snippet is creating a custom theme provider for a React application using Chakra UI.
+Here's a breakdown of what each part of the code is doing: */
 // ThemeContext.js
 
 import React, { createContext, useState, useContext } from 'react';

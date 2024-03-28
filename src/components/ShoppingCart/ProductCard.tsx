@@ -22,7 +22,7 @@ export default function ProductCard({ item }: { item: any }) {
                         <AspectRatio ratio={1} width={{ base: "12", md: "20" }} position="relative" >
                             <Image src={item.image} alt="empty-cart" />
                         </AspectRatio>
-                        <Text color="foreground" fontSize={{ base: "xs", md: "md" }} w={{ base: "100%", md: "50%" }} title={item.title} textAlign={{ base: "center", md: "left" }}>{item.title}</Text>
+                        <Text color="foreground" fontSize={{ base: "xs", xl: "md" }} w={{ base: "100%", xl: "70%" }} title={item.title} textAlign={{ base: "center", md: "left" }}>{item.title}</Text>
                     </Flex>
                 </HStack>
                 <VStack spacing="2" w="full">
@@ -36,7 +36,11 @@ export default function ProductCard({ item }: { item: any }) {
                 </VStack>
                 <VStack spacing="2" w="full">
                     <Text color="foreground" fontSize={{ base: "xs", md: "md" }} >Price</Text>
-                    <Text color="foreground" fontSize={{ base: "sm", md: "md" }} >${item.price}</Text>
+                    <Text color="foreground" fontSize={{ base: "sm", md: "md" }} >${item.price.toFixed(2)}</Text>
+                </VStack>
+                <VStack spacing="2" w="full">
+                    <Text color="foreground" fontSize={{ base: "xs", md: "md" }} >Total Amount</Text>
+                    <Text color="foreground" fontSize={{ base: "sm", md: "md" }} >${(item.price * item.quantity).toFixed(2)}</Text>
                 </VStack>
             </HStack>
         </Flex >

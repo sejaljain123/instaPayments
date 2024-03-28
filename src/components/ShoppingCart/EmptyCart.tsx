@@ -1,10 +1,12 @@
+import { fetchCheckoutDetailsAsync } from "@/lib/reducers/checkoutSlice";
 import { Flex, Button, Box, Text, Image } from "@chakra-ui/react";
 import { useDispatch } from "react-redux";
 
 function EmptyCart() {
 
+    const dispatch = useDispatch();
     const handleContinueShopping = () => {
-        window.location.reload();
+        dispatch(fetchCheckoutDetailsAsync() as any);
     }
     return (
         <Box w="full" height="full">
