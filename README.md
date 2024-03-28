@@ -41,6 +41,6 @@ This project is a web application built using Next.js, TypeScript, Redux, and Ch
 - Implement additional features or UI components as per project requirements.
 
 ## Contributors
-- [Your Name](https://github.com/sejaljain123): Project Lead & Developer
+- [Sejal Jain](https://github.com/sejaljain123): Project Lead & Developer
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
