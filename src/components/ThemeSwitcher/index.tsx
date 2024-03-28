@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { Button, Icon, useTheme } from '@chakra-ui/react';
-import { useThemeContext } from '../../themes/ThemeProvider'
 import { toggleTheme } from '@/lib/reducers/themeSlice';
 import { useDispatch } from 'react-redux';
 
