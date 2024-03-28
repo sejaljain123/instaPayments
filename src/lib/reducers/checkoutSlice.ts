@@ -1,15 +1,8 @@
 import { fetchCheckoutDetails } from "@/pages/api/fetchCheckoutDetails";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { getCacheWithExpiry, setCacheWithExpiry } from "@/utils/cache";
-import { stat } from "fs";
+import IItem from "@/interface/common.interface";
 
-interface IItem {
-  id: string;
-  image: string;
-  title: string;
-  price: number;
-  quantity: number;
-}
 
 const fetchCheckoutDetailsAsync = createAsyncThunk<
   { products: IItem[]; paymentMethods: string[] },

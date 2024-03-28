@@ -2,8 +2,9 @@ import { Box, Flex, Text, Image, Button, HStack, VStack, AspectRatio, Input, Div
 import { useEffect, useState } from 'react';
 import EmptyCart from './EmptyCart';
 import ProductCard from './ProductCard';
+import IItem from '@/interface/common.interface';
 
-export default function ShoppingCart({ products }: any) {
+export default function ShoppingCart({ products }: { products: IItem[] }) {
     return (
         <Box w="full" h="full" display="flex" flexDirection="column" justifyContent="space-between" alignItems="center" mt="4">
             <TableContainer width="full">

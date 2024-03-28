@@ -3,8 +3,9 @@ import { PiMinusBold, PiPlusBold } from 'react-icons/pi';
 import { IoClose } from 'react-icons/io5';
 import { useDispatch } from 'react-redux';
 import { updateQuantity, removeItem } from '@/lib/reducers/checkoutSlice';
+import IItem from '@/interface/common.interface';
 
-export default function ProductTableRow({ item }) {
+export default function ProductTableRow({ item }: { item: IItem }) {
     const dispatch = useDispatch();
 
     const handleRemove = () => {
@@ -27,7 +28,7 @@ export default function ProductTableRow({ item }) {
                 </Flex>
             </Td>
             <Td>
-                <Flex gap="2">
+                <Flex gap="2" alignItems="center" justifyContent="center">
                     <IconButton icon={<PiMinusBold />} variant="outline" color="foreground" aria-label="Reduce Quantity" size="xs" onClick={() => dispatch(updateQuantity({ id: item.id, quantity: item.quantity - 1 }))} />
                     <Text color="foreground" fontSize={{ base: "xs", md: "md" }}>{item.quantity}</Text>
                     <IconButton icon={<PiPlusBold />} variant="outline" color="foreground" aria-label="Increase Quantity" size="xs" onClick={() => dispatch(updateQuantity({ id: item.id, quantity: item.quantity + 1 }))} />
