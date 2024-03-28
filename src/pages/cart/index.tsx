@@ -8,6 +8,7 @@ import { useState, useEffect } from 'react';
 import { fetchCheckoutDetailsAsync } from '@/lib/reducers/checkoutSlice';
 import store from '@/lib/store';
 import { AsyncThunkAction } from '@reduxjs/toolkit';
+import Head from 'next/head';
 
 export default function Cart() {
     const cartItems = useSelector((state: any) => state.checkout.cartItems);
@@ -35,15 +36,22 @@ export default function Cart() {
     }
 
     return (
-        <Flex direction="column" w="full" >
-            <Flex background="background" width="full" flex="1" justifyContent="space-between" gap="20" h="full" p="8">
-                <VStack spacing="8" width="full" alignItems="flex-start" >
-                    <Heading as="h1" size="2xl" color="foreground">Shopping Cart</Heading>
-                    <ShoppingCart products={cartItems} />
-                </VStack>
-                <PriceSummary products={cartItems} />
-            </Flex >
-        </Flex >
+        <><Head>
+            <title>Cart</title>
+            <meta name="description" content="instapayments cart" />
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
+            <link rel="icon" href="/favicon.ico" />
+        </Head>
+            <Flex direction="column" w="full">
+                <Flex background="background" width="full" flex="1" justifyContent="space-between" gap="20" h="full" p="8">
+                    <VStack spacing="8" width="full" alignItems="flex-start">
+                        <Heading as="h1" size="2xl" color="foreground">Shopping Cart</Heading>
+                        <ShoppingCart products={cartItems} />
+                    </VStack>
+                    <PriceSummary products={cartItems} />
+                </Flex>
+            </Flex>
+        </>
 
     )
 }

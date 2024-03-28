@@ -5,6 +5,7 @@ import PriceSummary from "@/components/ShoppingCart/PriceSummary";
 import { NAVBAR_HEIGHT_MOBILE, NAVBAR_HEIGHT } from "@/constants";
 import { Flex, Heading, Image, VStack } from "@chakra-ui/react";
 import { useTheme } from "@chakra-ui/react";
+import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
@@ -29,15 +30,20 @@ export default function Checkout() {
     )
 
     return (
-        <Flex direction="column" w="full" >
-            <Flex background="background" width="full" flex="1" justifyContent="center" p="8" gap="20" h="full">
-                <VStack spacing="8" width="60%" alignItems="flex-start" >
-                    <Heading as="h1" size="2xl" color="foreground">Checkout</Heading>
-                    <CheckoutForm />
-                </VStack>
-                <OrderTotal />
-            </Flex >
-        </Flex>
+        <><Head>
+            <title>Checkout</title>
+            <meta name="description" content="instapayments cart" />
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
+            <link rel="icon" href="/favicon.ico" />
+        </Head><Flex direction="column" w="full">
+                <Flex background="background" width="full" flex="1" justifyContent="center" p="8" gap="20" h="full">
+                    <VStack spacing="8" width="60%" alignItems="flex-start">
+                        <Heading as="h1" size="2xl" color="foreground">Checkout</Heading>
+                        <CheckoutForm />
+                    </VStack>
+                    <OrderTotal />
+                </Flex>
+            </Flex></>
 
     )
 }
