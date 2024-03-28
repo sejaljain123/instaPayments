@@ -4,7 +4,7 @@ import { FaArrowLeft } from "react-icons/fa";
 import { FaCartShopping } from "react-icons/fa6";
 
 export default function Custom404() {
-    const router = useRouter();1``
+    const router = useRouter();
     return (
         <Flex direction="column" gap={4} alignItems="center" justifyContent="center" height="full" textAlign="center">
             <Heading color="foreground" fontSize="6xl" as="h1">D&apos;oh</Heading>
