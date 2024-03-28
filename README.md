@@ -1,6 +1,6 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-#InstaPayments
+# InstaPayments
 
 ## Description
 This project is a web application built using Next.js, TypeScript, Redux, and Chakra UI. It incorporates various features to provide a dynamic and user-friendly shopping experience.
