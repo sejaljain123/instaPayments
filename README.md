@@ -2,7 +2,6 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 # InstaPayments
 
-## Description
 This project is a web application built using Next.js, TypeScript, Redux, and Chakra UI. It incorporates various features to provide a dynamic and user-friendly shopping experience.
 
 ## Features
@@ -34,10 +33,6 @@ This project is a web application built using Next.js, TypeScript, Redux, and Ch
 - **styles:** Contains global styles or theme-related CSS files.
 - **utils:** Includes utility functions or helper modules.
 - **hooks:** Includes custom hooks to use across the application
-
-## Usage
-- Customize the theme and styling in the `styles` folder.
-- Implement additional features or UI components as per project requirements.
 
 ## Contributors
 - [Sejal Jain](https://github.com/sejaljain123): Project Lead & Developer
